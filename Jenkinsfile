@@ -30,9 +30,6 @@ node {
             } 
                 echo "Trying to Push Docker Build to DockerHub"
 	   
-	      stage('Build Docker Image'){
-     sh 'docker build -t itexperts0247/testdocker:nodejs .'
-   }
 	   // stage('Run Container on Dev Server'){
     		//def dockerRun = 'sudo docker run -ti -d -p 8000:8000 itexperts0247/testdocker'
      		//sshagent(['dev-server']) {

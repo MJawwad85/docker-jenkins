@@ -25,8 +25,14 @@ node {
 			You would need to first register with DockerHub before you can push images to your account
 		*/
         docker.withRegistry('https://registry.hub.docker.com', 'GitHub') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+	       app.push("${env.BUILD_NUMBER}")
+ 	       def dockerRun = 'sudo docker run -p 8089:8089 -p 50000:50000 --name=jenkins-master --mount source=jenkins-log,target=/var/log/jenkins --mount source=jenkins-data,target=/var/jenkins_home -d jenkins-server itexperts0247/testdocker:nodejs-${BUILD_NUMBER}'
+                    sshagent(['DockerDevServer']) {
+                        sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
+                    }
+                }
+		//app.push("${env.BUILD_NUMBER}")
+            //app.push("latest")
             } 
                 echo "Trying to Push Docker Build to DockerHub"
     }

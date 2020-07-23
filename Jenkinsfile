@@ -29,12 +29,15 @@ node {
  	       app.push("latest")
             } 
                 echo "Trying to Push Docker Build to DockerHub"
-	    
-	    stage('Run Container on Dev Server'){
-    		def dockerRun = 'sudo docker run -ti -d -p 8000:8000 itexperts0247/testdocker'
-     		sshagent(['dev-server']) {
-       		sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
-     }
+	   
+	      stage('Build Docker Image'){
+     sh 'docker build -t itexperts0247/testdocker:nodejs .'
    }
+	   // stage('Run Container on Dev Server'){
+    		//def dockerRun = 'sudo docker run -ti -d -p 8000:8000 itexperts0247/testdocker'
+     		//sshagent(['dev-server']) {
+       		//sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
+     //}
+   //}
   }
 }

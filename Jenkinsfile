@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("itexperts0247/testdocker")
+        app = docker.build("itexperts0247/testdocker:nodejs-${BUILD_NUMBER}", "-f Dockerfile ."")
     }
 
     stage('Test image') {

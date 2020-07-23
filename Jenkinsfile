@@ -35,4 +35,3 @@ node {
        		sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
      }
    }
-    }

@@ -35,7 +35,7 @@ node {
      		//sshagent(['dev-server']) {
 			withCredentials([usernamePassword(credentialsId: 'devops', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     script {
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
+                        sh "sshpass -p '$USERPASS' ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
        		//sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
      }
    }

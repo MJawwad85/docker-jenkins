@@ -36,9 +36,7 @@ node {
 		//	withCredentials([usernamePassword(credentialsId: 'devops', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                    // script {
                       // sh "sshpass -p '$USERPASS' ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
-			sh "ssh-agent /bin/sh"
-			sh "ssh-add /home/devops/.ssh/id_rsa"
-       		sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
+		sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
      //}
    }
   }

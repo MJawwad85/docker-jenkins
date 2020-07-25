@@ -32,11 +32,11 @@ node {
 	   
 	    stage('Run Container on Dev Server'){
     		def dockerRun = 'sudo docker run -ti -d -p 8000:8000 itexperts0247/testdocker'
-     		sshagent(['dev-server']) {
-		//	withCredentials([usernamePassword(credentialsId: 'devops', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                   // script {
-                      // sh "sshpass -p '$USERPASS' ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
-		sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
+     		//sshagent(['dev-server']) {
+			withCredentials([usernamePassword(credentialsId: 'devops', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                  //  script {
+                      sh "sshpass -p '$USERPASS' ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
+		//sh "ssh -o StrictHostKeyChecking=no devops@193.70.111.126 ${dockerRun}"
      //}
    }
   }
